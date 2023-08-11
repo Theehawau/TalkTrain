@@ -77,18 +77,18 @@ class LLMService:
 
     def user_query(self, query):
         user_prompt_template = self.create_user_query_prompt(query)
-        print("Post user query to EAS-ChatGLM2")
+        print("Post user query to EAS-Llama 2")
         start_time = time.time()
         ans = self.post_to_chatglm2_eas(user_prompt_template)
         end_time = time.time()
-        print("Get response from EAS-ChatGLM2. Cost time: {} s".format(end_time - start_time))
+        print("Get response from EAS-Llama 2. Cost time: {} s".format(end_time - start_time))
         return ans
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Command line argument parser')
-    parser.add_argument('--config', type=str, help='json配置文件输入', default='config.json')
-    parser.add_argument('--upload', help='上传知识库', default=False)
-    parser.add_argument('--query', help='用户请求查询')
+    parser.add_argument('--config', type=str, help='json configuration file input', default='config.json')
+    parser.add_argument('--upload', help='Upload knowledge base', default=False)
+    parser.add_argument('--query', help='user request query')
     args = parser.parse_args()
     if args.config:
         if not args.upload and not args.query:
