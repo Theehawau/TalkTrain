@@ -1,6 +1,6 @@
 {
   "embedding": {
-    "model_dir": "embedding_model/",
+    "model_dir": "/code/",
     "embedding_model": "SGPT-125M-weightedmean-nli-bitfit",
     "embedding_dimension": 768
   },
@@ -10,6 +10,7 @@
   },
   "ADBCfg": {
     "PG_HOST": "gp.xxxxx.rds.aliyuncs.com",
+    "PG_DATABASE": "database name, usually it's user name",
     "PG_USER": "pg_user",
     "PG_PASSWORD": "password"
   },
