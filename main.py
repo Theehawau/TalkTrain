@@ -18,7 +18,7 @@ class LLMService:
     
     def post_to_chatglm2_eas(self, query_prompt):
         url = self.cfg['EASCfg']['url']
-        author_key = self.cfg['EASCfg']['author_key']
+        author_key = self.cfg['EASCfg']['token']
         headers = {
             "Authorization": author_key,
             'Accept': "*/*",
