@@ -30,7 +30,7 @@ def token_required(f):
     return decorated
 
 # Initialize the LLMService object with the configuration
-with open('myconfig.json') as f:
+with open('config.json') as f:
     cfg = json.load(f)
     solver = LLMService(cfg)
 
