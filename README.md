@@ -1,3 +1,5 @@
+# Step-by-Step Tutorial
+Here: [Tutorial: Building an Exciting Journey for Your GenAI Application with Llama 2, AnalyticDB, PAI-EAS](https://www.alibabacloud.com/blog/600283)
 ## Demo demonstration combining LLM, LangChain, ADB
 
 - Upload the user's local knowledge base file and generate embedding based on the SGPT-125M model
