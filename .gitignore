@@ -4,3 +4,4 @@ myconfig.json
 test_curl.sh
 venv
 embedding_model
+__pycache__

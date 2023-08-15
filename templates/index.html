@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLM Service</title>
+</head>
+<body>
+    <h1>LLM Service</h1>
+    
+    <h2>Upload Knowledge</h2>
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="knowledge-file">Select Knowledge Files:</label>
+        <input type="file" id="knowledge-file" name="knowledge-file" multiple>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    
+    <h2>Make a Query</h2>
+    <form id="query-form">
+        <label for="query-input">Enter your query:</label>
+        <input type="text" id="query-input" name="query-input">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <div id="query-result"></div>
+    
+    <script>
+        // Handle form submission for uploading knowledge
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+            
+            fetch('/upload', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJfaWQiOjEyMywidXNlcm5hbWUiOiJqb2huX2RvZSJ9LCJleHAiOjE3MjM2MTI0Nzl9.z4MBKlGw1H7P0j83_YNgWQE8wOhmCMnGn3HrL3xXDOM'
+                }
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data);
+                alert(data.message);
+            })
+            .catch(function(error) {
+                console.error(error);
+                alert('Error uploading knowledge');
+            });
+        });
+        
+        // Handle form submission for making a query
+        document.getElementById('query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var query = form.elements['query-input'].value;
+            
+            fetch('/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJfaWQiOjEyMywidXNlcm5hbWUiOiJqb2huX2RvZSJ9LCJleHAiOjE3MjM2MTI0Nzl9.z4MBKlGw1H7P0j83_YNgWQE8wOhmCMnGn3HrL3xXDOM'
+                },
+                body: JSON.stringify({
+                    query: query
+                })
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data);
+                document.getElementById('query-result').innerText = 'Answer: ' + data.answer;
+            })
+            .catch(function(error) {
+                console.error(error);
+                alert('Error making query');
+            });
+        });
+    </script>
+</body>
+</html>
