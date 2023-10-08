@@ -39,24 +39,24 @@ cd /home/LLM_Solution
 ### Step 3: Run main.py
 1. Upload and index the user-specified knowledge base
 ```bash
-python main.py --config config.json --upload true
+python llm_service.py --config config.json --upload true
 ```
 
 2. User request query
 ```bash
-python main.py --config config.json --query "user question"
+python llm_service.py --config config.json --query "user question"
 ```
 
 ### Show results:
 ```bash
-python main.py --config myconfig.json --query What is Machine Learning PAI?
+python llm_service.py --config myconfig.json --query What is Machine Learning PAI?
 
 Output:
 The answer is: Sorry, this question cannot be answered based on known information.
 ```
 
 ```bash
-python main.py --config myconfig.json --upload true
+python llm_service.py --config myconfig.json --upload true
 
 Output:
 Insert into AnalyticDB Success.
