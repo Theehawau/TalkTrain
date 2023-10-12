@@ -15,6 +15,10 @@ We have tested TalkTrain in Ubuntu 20.04, from a conda environment.
     https://drive.google.com/drive/folders/1UZxnS41k7QuseRqANcStSFKNXamUNtT_?usp=drive_link
     and place them in the matching folders.
 
+2) Install the necessary packages onto your machine with apt install or similar.
+    portaudio19-dev
+    python3-all-dev
+
 2) Create an environment with Python 3.10.
 
 3) In the environment, install packages in requirements.txt using pip.
