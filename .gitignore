@@ -5,3 +5,5 @@ test_curl.sh
 venv
 embedding_model
 __pycache__
+SadTalker/checkpoints/*
+SadTalker/gfpgan/weights/*
