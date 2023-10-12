@@ -19,3 +19,5 @@ faiss-cpu==1.7.4
 # Flask API related
 flask==2.3.2
 pyjwt==2.8.0
+
+pyaudio

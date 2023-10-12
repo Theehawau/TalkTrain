@@ -5,14 +5,14 @@
     "embedding_dimension": 768
   },
   "EASCfg": {
-    "url": "http://xxxxx.pai-eas.aliyuncs.com/api/predict/llama2_model",
-    "token": "xxxxxx"
+    "url": "http://5525096423395655.ap-southeast-1.pai-eas.aliyuncs.com/api/predict/tyqw_service",
+    "token": "YmZmZTE3ZWQ2ZTUxYjg4YWQzYjk4ODJlYzg1OTMwMjY3OTJlNWZkYw=="
   },
   "ADBCfg": {
-    "PG_HOST": "gp.xxxxx.rds.aliyuncs.com",
-    "PG_DATABASE": "database name, usually it's user name",
-    "PG_USER": "pg_user",
-    "PG_PASSWORD": "password"
+    "PG_HOST": "gp-gs5994z5q9j244y9uo-master.gpdbmaster.singapore.rds.aliyuncs.com",
+    "PG_DATABASE": "talktrain",
+    "PG_USER": "talktrain",
+    "PG_PASSWORD": "Hackathon2023"
   },
   "create_docs":{
     "chunk_size": 200,
@@ -21,5 +21,5 @@
     "glob": "**/*"
   },
   "query_topk": 4,
-  "prompt_template": "Answer user questions concisely and professionally based on the following known information. If you cannot get an answer from it, please say \"This question cannot be answered based on known information\" or \"Insufficient relevant information has been provided\", no fabrication is allowed in the answer, please use English for the answer. \n=====\nKnown information:\n{context}\n=====\nUser question:\n{question}"
+  "prompt_template": "You are an audience member at a public speaking event. Your job is to ask 3 questions about the following information, which should be extrapolated questions, not recall-based. Do not say anything before your questions. The information is as follows:"
 }

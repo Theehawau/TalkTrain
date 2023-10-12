@@ -28,7 +28,7 @@ class LLMService:
             url=url,
             data=query_prompt.encode('utf8'),
             headers=headers,
-            timeout=10000,
+            timeout=100000,
         )
         return resp.text
         
@@ -76,6 +76,7 @@ class LLMService:
 
     def user_query(self, query):
         user_prompt_template = self.create_user_query_prompt(query)
+        #user_prompt_template = 'Who are you'
         print("Post user query to EAS-Llama 2")
         start_time = time.time()
         ans = self.post_to_llm_eas(user_prompt_template)
