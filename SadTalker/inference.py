@@ -19,6 +19,7 @@ def main(args):
 
     pic_path = args.source_image
     audio_path = args.driven_audio
+    save_name = os.path.join(args.result_dir,args.save_name)
     save_dir = os.path.join(args.result_dir, strftime("%Y_%m_%d_%H.%M.%S"))
     os.makedirs(save_dir, exist_ok=True)
     pose_style = args.pose_style
@@ -34,9 +35,10 @@ def main(args):
 
     sadtalker_paths = init_path(args.checkpoint_dir, os.path.join(current_root_path, 'SadTalker/src/config'), args.size, args.old_version, args.preprocess)
 
+    print('Model Initialize')
     #init model
     preprocess_model = CropAndExtract(sadtalker_paths, device)
-
+    print('After Model Initialize')
     audio_to_coeff = Audio2Coeff(sadtalker_paths,  device)
     
     if args.facerender == 'facevid2vid':
@@ -94,14 +96,14 @@ def main(args):
     result = animate_from_coeff.generate(data, save_dir, pic_path, crop_info, \
                                 enhancer=args.enhancer, background_enhancer=args.background_enhancer, preprocess=args.preprocess, img_size=args.size)
     
-    shutil.move(result, save_dir+'.mp4')
-    print('The generated video is named:', save_dir+'.mp4')
+    shutil.move(result, save_name+'.mp4')
+    print('The generated video is named:', save_name+'.mp4')
 
     if not args.verbose:
         shutil.rmtree(save_dir)
 
     
-def get_avatar_video(audio_dir, image_dir):
+def get_avatar_video(audio_dir, image_dir, save_name):
 
     parser = ArgumentParser()  
     parser.add_argument("--driven_audio", default='./examples/driven_audio/bus_chinese.wav', help="path to driven audio")
@@ -142,9 +144,12 @@ def get_avatar_video(audio_dir, image_dir):
     parser.add_argument('--z_near', type=float, default=5.)
     parser.add_argument('--z_far', type=float, default=15.)
 
+    parser.add_argument('--save_name', type=str, default='Panel1')
+
     args = parser.parse_args()
     args.driven_audio = audio_dir
     args.source_image = image_dir
+    args.save_name = save_name
     args.facerender = "pirender"
 
     if torch.cuda.is_available() and not args.cpu:

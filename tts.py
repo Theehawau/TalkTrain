@@ -1,7 +1,7 @@
 import http.client
 import urllib.parse
 import json
-from generate_questions import generate_questions
+# from generate_questions import generate_questions
 
 def processGETRequest(appKey, token, text, audioSaveFile, format, sampleRate) :
     host = 'nls-gateway-ap-southeast-1.aliyuncs.com'
@@ -60,7 +60,7 @@ def processPOSTRequest(appKey, token, text, audioSaveFile, format, sampleRate) :
         print('The POST request failed: ' + str(body))
     conn.close()
 
-def tts(app_key, token, text):
+def tts(app_key, token, text, audio_save_path):
     # Encode the URL based on the RFC 3986 standard. 
     textUrlencode = text
     textUrlencode = urllib.parse.quote_plus(textUrlencode)
@@ -68,8 +68,8 @@ def tts(app_key, token, text):
     textUrlencode = textUrlencode.replace("*", "%2A")
     textUrlencode = textUrlencode.replace("%7E", "~")
     print('text: ' + textUrlencode)
-    audioSaveFile = 'syAudio.wav'
+    # audioSaveFile = 'syAudio.wav'
     format = 'wav'
     sampleRate = 16000
     # GET request
-    processGETRequest(app_key, token, textUrlencode, audioSaveFile, format, sampleRate)
+    processGETRequest(app_key, token, textUrlencode, audio_save_path, format, sampleRate)

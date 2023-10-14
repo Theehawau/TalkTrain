@@ -3,7 +3,8 @@ import time
 import gradio as gr
 import parselmouth
 import speech_recognition as sr
-
+from gtts import gTTS
+from SadTalker.inference import get_avatar_video
 from concurrent.futures import ProcessPoolExecutor
 
 ppe = ProcessPoolExecutor()
@@ -15,11 +16,35 @@ r=sr.Recognizer()
 rate_node = MeasureSpeechRateNode()
 pitch_node = MeasurePitchNode()
 
-# def generate_question(text):
-#     print('genQ called')
-#     global questions
-#     questions = "questions available now"
-#     return f"Input: \n {text}", f"Input: \n {text}"
+AUDIO_DIR = '/home/kane/TalkTrain/audios'
+VIDEO_DIR = '/home/kane/TalkTrain/results'
+IMAGE_PATH = '/home/kane/TalkTrain/portraits/guy2.jpeg'
+
+from tts import tts
+from concurrent.futures import ThreadPoolExecutor
+counter = 0
+
+def generate_videos(questions):
+    global counter
+    print('generation video called')
+    # with ProcessPoolExecutor(max_workers=1) as executor:
+    #     for question in questions:
+    #         print('process pool')
+    #         counter+=1
+    #         executor.submit(avatar_pipeline, question,counter)
+    # print('Tasks submitted')
+    for question in questions:
+        counter+=1
+        avatar_pipeline(question,counter)
+    return None
+
+def avatar_pipeline(question, count):
+    print(f'Generating video for {question}')
+    # tts('zE6Ckn248eJtl6Cd', 'dccf69c25151444a9d1a2a65a7cb6404',question, f'{AUDIO_DIR}/Audio{count}')
+    tts = gTTS(question)
+    tts.save(f'{AUDIO_DIR}/Audio{count}.wav')
+    get_avatar_video(f'{AUDIO_DIR}/Audio{count}.wav',IMAGE_PATH, f'Panel{count}')
+    return('Done!')
 
 
 def generate_speech(text):
@@ -41,7 +66,6 @@ def count_down(_, progress = gr.Progress(track_tqdm=True)):
     for i in progress.tqdm(loop, desc = "Starting Q&A session"):
         time.sleep(2)
     return "Panels are ready!"
-
 
 def activate_count():
     return gr.Textbox(value="Starting CountDown", show_label=False , visible=True)
