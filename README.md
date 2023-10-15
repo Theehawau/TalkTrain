@@ -68,7 +68,7 @@ pip install -r requirements.txt
 
 4) Please download the SadTalker weights from this Google drive for Face Animation(FA):
     https://drive.google.com/drive/folders/1UZxnS41k7QuseRqANcStSFKNXamUNtT_?usp=drive_link
-    and place the folders in [SadTalker](../main/SadTalker/).
+    and place the folders in [SadTalker](../master/SadTalker/).
 
 5) Setup Alibaba cloud services:
     - [Tongyi Qianwen LLM](https://www.alibabacloud.com/blog/alibaba-integrates-llm-tongyi-qianwen-into-taobao-to-refine-e-commerce-searches-for-users_600401)
