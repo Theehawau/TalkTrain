@@ -70,7 +70,7 @@ pip install -r requirements.txt
     https://drive.google.com/drive/folders/1UZxnS41k7QuseRqANcStSFKNXamUNtT_?usp=drive_link
     and place the folders in [SadTalker](../master/SadTalker/).
 
-5) Setup Alibaba cloud services:
+5) Setup Alibaba cloud services and configure tokens in [config](../master/config.json) and [utils](../master/utils.py) files:
     - [Tongyi Qianwen LLM](https://www.alibabacloud.com/blog/alibaba-integrates-llm-tongyi-qianwen-into-taobao-to-refine-e-commerce-searches-for-users_600401)
     - [Intelligent Spech Services](https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187)
 
@@ -113,7 +113,7 @@ export QT_QPA_PLATFORM=offscreen
 
 ## Acknowledgements
 
-TalkTrain builds on existing technologies.
+TalkTrain builds on existing technologies. We are grateful for training session provided by Alibaba Cloud that facilitated using their platform and their consistent support through the development of this project.
 
 - Question Generation(QG): <a href=''> Alibaba TongChen LLM </a> 
 - Automatic Speech Recognition (ASR): <a href='https://openai.com/research/whisper'> OpenAI whisper </a>   
