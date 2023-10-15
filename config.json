@@ -8,18 +8,6 @@
     "url": "YourURL",
     "token": "YourToken"
   },
-  "ADBCfg": {
-    "PG_HOST": "gp-gs5994z5q9j244y9uo-master.gpdbmaster.singapore.rds.aliyuncs.com",
-    "PG_DATABASE": "talktrain",
-    "PG_USER": "talktrain",
-    "PG_PASSWORD": "Hackathon2023"
-  },
-  "create_docs":{
-    "chunk_size": 200,
-    "chunk_overlap": 0,
-    "docs_dir": "docs/",
-    "glob": "**/*"
-  },
   "query_topk": 4,
   "prompt_template": "You are an audience member at a public speaking event. Your job is to ask 3 questions about the following information, which should be extrapolated questions, not recall-based. Do not say anything before your questions. The information is as follows:"
 }
