@@ -28,6 +28,15 @@ TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by A
 
 <h3>  (Coming SOON!!!) A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
 
+## Features
+
+- [gradio_app.py]() - WebUI interface
+- [utils.py]() - helper functions for webUI event listeners
+- [config.json]() - Token configuration
+- [tts.py]() - helfer functions for Text-To-Speech (TTS)
+-
+
+
 ## Environment
 
 We have tested TalkTrain in Ubuntu 20.04, from a conda environment.
