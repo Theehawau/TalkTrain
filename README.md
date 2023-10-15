@@ -13,23 +13,56 @@ We have tested TalkTrain in Ubuntu 20.04, from a conda environment.
 
 1) git clone this repository
 
+```bash
+git clone https://github.com/Theehawau/TalkTrain.git
+cd TalkTrain
+```
+
 2) Install the necessary packages onto your machine with apt install or similar.
     portaudio19-dev
     python3-all-dev
 
-2) Create an environment with Python 3.10.
+2) Create an environment with Python 3.10
+```bash
+conda create -n TalkTrain python=3.10
+```
 
 3) In the environment, install packages in requirements.txt using pip.
 
+```bash 
+conda activate TalkTrain
+pip install -r requirements.txt
+```
+
 4) Please download the SadTalker weights from this Google drive:
     https://drive.google.com/drive/folders/1UZxnS41k7QuseRqANcStSFKNXamUNtT_?usp=drive_link
-    and place them in the matching folders.
+    and place the folders in [SadTalker](../main/SadTalker/).
 
 If you have ubuntu OS:
 
-2) bash install.sh
+You can install all requirements with
+```bash
+bash install.sh
+```
 
 # Running Instructions
 
-1) TODO: Running Instructions
-2) You can run the file llm+tts+avatar_example.py for general testing.
+
+### Run WebApp Locally
+```bash
+gradio gradio_app.py
+```
+
+### Test Pipeline
+
+You can run the file [llm+tts+avatar_example.py](../main/llm+tts+avatar_example.py) for testing the QG -> TTS -> FA pipeline.
+
+
+# Issues, Limitations
+
+If you run into this error 
+
+
+You need an Alibaba cloud account and services initiated to test this out. You can see a recorde demo here 
+
+# Reference
