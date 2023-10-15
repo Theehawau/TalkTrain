@@ -2,6 +2,8 @@
 <div align="center">
 <h2> <strong> TalkTrain </strong> </h2>
 
+<a href='https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw'><img src='https://img.shields.io/badge/demo-YouTube-red'></a> &nbsp; <a href=''><img src='https://img.shields.io/badge/Alibaba%20Cloud%20-orange'></a> &nbsp; <a href=''><img src='https://img.shields.io/badge/GITEX%20-orange'></a> &nbsp;
+
 <div>
     <a href='https://www.linkedin.com/in/toyinhawau/' target='_blank'>Hawau Olamide Toyin <sup>1,2,3</sup> </a>&emsp;
     <a href='https://www.linkedin.com/in/kanelindsay1/' target='_blank'>Kane Lindsay<sup>1,2</a>&emsp;
@@ -22,10 +24,9 @@
 TalkTrain is an AI-powered public speaking and presentation practise application.
 Make your speech to our virtual assistant, and you will be provided with useful metrics, as well as questions extrapolated from your own presentation.
 
-TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud. Watch presentation here.
+TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud. Watch project presentation on [YouTube](https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw).
 
-<h3>  (Coming SOON!!!) 
-A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
+<h3>  (Coming SOON!!!) A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
 
 ## Environment
 
