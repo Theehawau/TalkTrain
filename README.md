@@ -30,12 +30,12 @@ TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by A
 
 ## Features
 
-- [gradio_app.py]() - WebUI interface code and entry point
-- [utils.py]() - helper functions for webUI event listeners, speech metrics calculation and Automatic-Speech-Recognition (ASR)
-- [config.json]() - Token configuration
-- [tts.py]() - helper functions for Text-To-Speech (TTS)
-- [generate_questions.py]() - helper functions for Question-Generation (QG)
-- [/SadTalker/inference.py]() - helper function for Face Animation (FA)
+- [gradio_app.py](../master/gradio_app.py) - WebUI interface code and entry point
+- [utils.py](../master/utils.py) - Helper functions for webUI event listeners, speech metrics calculation and Automatic-Speech-Recognition (ASR)
+- [config.json](../master/config.json) - Configuration for tokens, prompts etc
+- [tts.py](../master/tts.py) - Helper functions for Text-To-Speech (TTS)
+- [generate_questions.py](../master/generate_questions.py) - Helper functions for Question-Generation (QG)
+- [/SadTalker/inference.py](../master/SadTalker/inference.py) - Helper function for Face Animation (FA)
 
 ## Environment
 
