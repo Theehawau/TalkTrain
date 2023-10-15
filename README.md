@@ -5,13 +5,16 @@ Make your speech to our virtual assistant, and you will be provided with useful 
 
 TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud.
 
+<h3>  (Coming SOON!!!) 
+A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
+
 # Environment
 
 We have tested TalkTrain in Ubuntu 20.04, from a conda environment.
 
 # Install Instructions
 
-1) git clone this repository
+1) Clone this repository
 
 ```bash
 git clone https://github.com/Theehawau/TalkTrain.git
@@ -44,10 +47,11 @@ pip install -r requirements.txt
 
 If you have ubuntu OS:
 
-You can install all requirements with
-```bash
-bash install.sh
+You can install all requirements with 
+```bash 
+bash install.sh 
 ```
+
 
 # Running Instructions
 
@@ -61,7 +65,10 @@ gradio gradio_app.py
 
 ### Test Pipeline
 
-You can run the file ``` bash python llm+tts+avatar_example.py ``` for testing the QG -> TTS -> FA pipeline.
+For testing the QG -> TTS -> FA pipeline, run  
+``` bash 
+python llm+tts+avatar_example.py 
+``` 
 
 
 # Issues, Limitations
