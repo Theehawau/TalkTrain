@@ -116,11 +116,8 @@ export QT_QPA_PLATFORM=offscreen
 TalkTrain builds on existing technologies.
 
 - Question Generation(QG): <a href=''> Alibaba TongChen LLM </a> 
-- Automatic Speech Recognition (ASR): <a href=''> OpenAI whisper </a>   
+- Automatic Speech Recognition (ASR): <a href='https://openai.com/research/whisper'> OpenAI whisper </a>   
 - TTS: <a href='https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187'> Alibaba Intelligent Speech Interaction </a>  
 - Avatar Animation: <a href='https://github.com/OpenTalker/SadTalker'> SadTalker </a>  
 
 
-<div align="center">
-
-<img src='' width='500px'/> </div>
