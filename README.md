@@ -27,11 +27,11 @@ TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by A
 <h3>  (Coming SOON!!!) 
 A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
 
-# Environment
+## Environment
 
 We have tested TalkTrain in Ubuntu 20.04, from a conda environment.
 
-# Install Instructions
+## Install Instructions
 
 1) Clone this repository
 
@@ -72,17 +72,17 @@ bash install.sh
 ```
 
 
-# Running Instructions
+## Running Instructions
 
 
-###  WebUI demo
+####  WebUI demo
 ```bash
 conda activate TalkTrain
 cd TalkTrain
 gradio gradio_app.py
 ```
 
-### Test Pipeline
+#### Test Pipeline
 
 For testing the QG -> TTS -> FA pipeline, run  
 ``` bash 
@@ -90,7 +90,7 @@ python llm+tts+avatar_example.py
 ``` 
 
 
-# Issues, Limitations
+## Issues, Limitations
 
 You need an Alibaba cloud account and services initiated to test this out. A recorded demo is here
 If you run into QS error 
@@ -98,7 +98,7 @@ If you run into QS error
 
 
 
-# Acknowledgements
+## Acknowledgements
 
 TalkTrain builds on existing technologies.
 
