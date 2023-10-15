@@ -62,7 +62,7 @@ pip install -r requirements.txt
     and place the folders in [SadTalker](../main/SadTalker/).
 
 5) Setup Alibaba cloud services:
-    - [LLM]()
+    - [Tongyi Qianwen LLM](https://www.alibabacloud.com/blog/alibaba-integrates-llm-tongyi-qianwen-into-taobao-to-refine-e-commerce-searches-for-users_600401)
     - [Intelligent Spech Services](https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187)
 
 If you have ubuntu OS:
