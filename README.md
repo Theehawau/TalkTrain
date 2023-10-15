@@ -31,7 +31,7 @@ TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by A
 ## Features
 
 - [gradio_app.py]() - WebUI interface
-- [utils.py]() - helper functions for webUI event listeners and Automatic-Speech-Recognition (ASR)
+- [utils.py]() - helper functions for webUI event listeners, speech metrics calculation and Automatic-Speech-Recognition (ASR)
 - [config.json]() - Token configuration
 - [tts.py]() - helper functions for Text-To-Speech (TTS)
 - [generate_questions.py]() - helper functions for Question-Generation (QG)
