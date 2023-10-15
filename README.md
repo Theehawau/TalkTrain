@@ -34,9 +34,12 @@ conda activate TalkTrain
 pip install -r requirements.txt
 ```
 
-4) Please download the SadTalker weights from this Google drive:
+4) Please download the SadTalker weights from this Google drive for Face Animation(FA):
     https://drive.google.com/drive/folders/1UZxnS41k7QuseRqANcStSFKNXamUNtT_?usp=drive_link
     and place the folders in [SadTalker](../main/SadTalker/).
+
+5) Setup Alibaba cloud services:
+
 
 If you have ubuntu OS:
 
@@ -48,21 +51,32 @@ bash install.sh
 # Running Instructions
 
 
-### Run WebApp Locally
+###  WebUI demo
 ```bash
+conda activate TalkTrain
+cd TalkTrain
 gradio gradio_app.py
 ```
 
 ### Test Pipeline
 
-You can run the file [llm+tts+avatar_example.py](../main/llm+tts+avatar_example.py) for testing the QG -> TTS -> FA pipeline.
+You can run the file ``` bash python llm+tts+avatar_example.py ``` for testing the QG -> TTS -> FA pipeline.
 
 
 # Issues, Limitations
 
-If you run into this error 
+You need an Alibaba cloud account and services initiated to test this out. A recorded demo is here
+If you run into QS error 
+```bash export QT_QPA_PLATFORM=offscreen ``` , setting this environment variable solves this.
 
 
-You need an Alibaba cloud account and services initiated to test this out. You can see a recorde demo here 
 
-# Reference
+# Acknowledgements
+
+TalkTrain builds on existing technologies.
+
+- Question Generation(QG): <a href=''> AliBaba TongChen LLM </a> 
+- Automatic Speech Recognition (ASR): <a href=''> OpenAI whisper </a>   
+- TTS: <a href='https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187'> Alibaba Intelligent Speech Interaction </a>  
+- Avatar Animation: <a href='https://github.com/OpenTalker/SadTalker'> SadTalker </a>  
+
