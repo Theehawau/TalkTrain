@@ -8,9 +8,9 @@ import speech_recognition as sr
 import random
 
 from tts import tts
-from gtts import gTTS
 from pydub import AudioSegment
 from transformers import pipeline
+from generate_questions import generate_question
 from SadTalker.inference import get_avatar_video
 
 pipe = pipeline("automatic-speech-recognition", model="openai/whisper-tiny.en")
@@ -27,10 +27,63 @@ SLIDES_PATH = WORK_DIR + "/slides/"
 PANELS_PATH = WORK_DIR + "/results/"
 AUDIO_DIR = WORK_DIR + '/audios/'
 VIDEO_DIR = WORK_DIR + '/results/'
-IMAGE_PATH = '/home/kane/TalkTrain/portraits/Panel2.png'
-
+IMAGE_PATH = WORK_DIR + '/portraits/Panel2.png'
+transcript = ""
+chars_since_metric_update = 0
+chars_since_question_gen = 0
+QUESTION_UPDATE_INTERVAL = 500 # After how many characters spoken to auto-generate questions
+TTS_PROJECT_NAME = 'zE6Ckn248eJtl6Cd'
+TTS_API_KEY = '3914319793ba4bce8ef86cf326eb173e'
 
 counter = 0
+
+# function for real time transcription from microphone
+def transcribe(audio, state=""):
+    global transcript
+    time.sleep(4)
+    # Load the WAV files
+    audio1 = AudioSegment.from_file("recording.wav", format="wav")
+    audio2 = AudioSegment.from_file(audio, format="wav")
+    # Concatenate the audio segments
+    result = audio1 + audio2
+    # Export the concatenated audio as a new WAV file
+    result.export("recording.wav", format="wav")
+    # Get rid of the glitch where silence generates the word "you".
+    text = pipe(audio)["text"]
+    if text.replace(" ", "") != "you":
+        state += text + " "
+
+    transcript = 'transciption'
+    return state, state
+
+# function for checking if questions should be generated based on input state,the current packet and the current questions
+def check_generate_questions(state, packet, current_questions):
+    questions = current_questions
+    global chars_since_question_gen
+    if chars_since_question_gen >= QUESTION_UPDATE_INTERVAL:
+        print("State has reached an interval of {QUESTION_UPDATE_INTERVAL} characters. Time to update metrics.")
+        chars_since_question_gen = 0
+        print(f'Transcript: {state[-QUESTION_UPDATE_INTERVAL:]}')
+        questions = generate_question(state[-QUESTION_UPDATE_INTERVAL:], state="")
+        # For generating panel video from questions
+        generate_video(questions)
+    chars_since_question_gen += len(packet)
+    return questions
+
+
+def check_update_metrics(state, packet, speech_rate, pause_rate, pitch_sd, feedback):
+    print("State is: ", len(state), " characters long.")
+    global chars_since_metric_update
+    if chars_since_metric_update >= 400:
+        chars_since_metric_update = 0
+        print("State has reached an interval of 400 characters. Time to update metrics.")
+        recording = AudioSegment.from_wav("recording.wav")
+        last_10_seconds = recording[-10000:]
+        last_10_seconds.export("last_10_seconds.wav", format="wav")
+        speech_rate, pause_rate, pitch_sd = get_rate_metrics("last_10_seconds.wav", None)
+        feedback = analyze_speech_metrics(speech_rate, pause_rate, pitch_sd)
+    chars_since_metric_update += len(packet)
+    return speech_rate, pause_rate, pitch_sd, feedback
 
 def generate_video(questions):
     global counter
@@ -50,34 +103,34 @@ def generate_video(questions):
 
 def avatar_pipeline(question, count):
     print(f'Generating video for {question}')
-    tts('zE6Ckn248eJtl6Cd', '3914319793ba4bce8ef86cf326eb173e',question, f'{AUDIO_DIR}/Audio{count}.wav')
-    # tts = gTTS(question)
-    # tts.save(f'{AUDIO_DIR}/Audio{count}.wav')
+    tts(TTS_PROJECT_NAME, TTS_API_KEY,question, f'{AUDIO_DIR}/Audio{count}.wav')
     get_avatar_video(f'{AUDIO_DIR}/Audio{count}.wav',IMAGE_PATH, f'Panel{count}')
     return('Done!')
 
-def generate_speech(text):
-    return f"Input: \n {text}"
+def stop_recording(state):
+    return gr.State(value="")
+# def generate_speech(text):
+#     return f"Input: \n {text}"
 
-def generate_remarks(text):
-    return f"Remarks: \n {text}"
+# def generate_remarks(text):
+#     return f"Remarks: \n {text}"
 
-def activate_interactive():
-    return gr.Button(interactive=True), gr.Markdown(visible=False)
+# def activate_interactive():
+#     return gr.Button(interactive=True), gr.Markdown(visible=False)
 
-def activate_panel(text):
-    print(text)
-    return gr.Row(visible=True), gr.Textbox(visible = False), gr.Button(interactive=False)
+# def activate_panel(text):
+#     print(text)
+#     return gr.Row(visible=True), gr.Textbox(visible = False), gr.Button(interactive=False)
 
-def count_down(_, progress = gr.Progress(track_tqdm=True)):
-    time.sleep(2)
-    loop = [None] * 5
-    for i in progress.tqdm(loop, desc = "Starting Q&A session"):
-        time.sleep(2)
-    return "Panels are ready!"
+# def count_down(_, progress = gr.Progress(track_tqdm=True)):
+#     time.sleep(2)
+#     loop = [None] * 5
+#     for i in progress.tqdm(loop, desc = "Starting Q&A session"):
+#         time.sleep(2)
+#     return "Panels are ready!"
 
-def activate_count():
-    return gr.Textbox(value="Starting CountDown", show_label=False , visible=True)
+# def activate_count():
+#     return gr.Textbox(value="Starting CountDown", show_label=False , visible=True)
 
 def activate_button(text):
     if len(text) == 0:
@@ -85,13 +138,12 @@ def activate_button(text):
     else:
         return gr.Button("Any Questions?", interactive=True)
 
-def use_text(text, file):
+def use_text(text):
     global transcript
-    if text:
-        transcript = text
-        return f"{text}"
-    elif file:
-        return save_file(file)
+    transcript = text
+    return f"{text}"
+    # elif file:
+    #     return save_file(file)
 
 def use_file(file):
     return save_file(file)
@@ -212,28 +264,6 @@ def Remove(uploaded_slides):
 
 def slide_show(x):
     return gr.Column(visible=True), gr.Column(visible=False), gr.Image(value=x[1])
-
-def transcribe(audio, state=""):
-    global transcript
-    time.sleep(4)
-    print(audio)
-
-    # Load the WAV files
-    audio1 = AudioSegment.from_file("recording.wav", format="wav")
-    audio2 = AudioSegment.from_file(audio, format="wav")
-    # Concatenate the audio segments
-    result = audio1 + audio2
-
-    # Export the concatenated audio as a new WAV file
-    result.export("recording.wav", format="wav")
-
-    # Get rid of the glitch where silence generates the word "you".
-    text = pipe(audio)["text"]
-    if text.replace(" ", "") != "you":
-        state += text + " "
-
-    transcript = 'transciption'
-    return state, state
 
 def make_question_video(counter,questions):
     q = counter

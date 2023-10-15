@@ -28,7 +28,7 @@ python-pptx==0.6.21
 pytorch-triton-rocm==2.0.2
 resampy==0.4.2
 sentence-transformers==2.2.2
-speechrecognition==3.10.0
+SpeechRecognition==3.10.0
 tts==0.17.8
 unstructured==0.10.19
 unstructured-inference==0.6.6
