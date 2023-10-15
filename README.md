@@ -102,7 +102,8 @@ python llm+tts+avatar_example.py
 
 ## Issues, Limitations
 
-You need an Alibaba cloud account and services initiated to test this out. A recorded demo is here
+You need an Alibaba cloud account and services initiated to test this out. A recorded demo is available on [YouTube](https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw').
+
 If you run into QS error , setting this environment variable solves this.
 ```bash 
 export QT_QPA_PLATFORM=offscreen 
