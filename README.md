@@ -1,9 +1,28 @@
-## TalkTrain
+
+<div align="center">
+<h2> <strong> TalkTrain </strong> </h2>
+
+<div>
+    <a href='https://www.linkedin.com/in/toyinhawau/' target='_blank'>Hawau Olamide Toyin <sup>1,2,3</sup> </a>&emsp;
+    <a href='https://www.linkedin.com/in/kanelindsay1/' target='_blank'>Kane Lindsay<sup>1,2</a>&emsp;
+</div>
+<br>
+<div>
+    <sup>1</sup> MBZUAI &emsp; <sup>2</sup> Metaverse Lab, MBZUAI &emsp; <sup>3</sup> Speech Lab, MBZUAI &emsp; 
+</div>
+<br>
+<i><strong><a href='https://middle-east.alibabacloud.com/campaign/ai_hackathon#J_9912546380' target='_blank'>GITEX AI InnovateFest 2023 Powered by Alibaba Cloud</a></strong></i>
+<br>
+<br>
+</div>
+
+
+
 
 TalkTrain is an AI-powered public speaking and presentation practise application.
 Make your speech to our virtual assistant, and you will be provided with useful metrics, as well as questions extrapolated from your own presentation.
 
-TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud.
+TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud. Watch presentation here.
 
 <h3>  (Coming SOON!!!) 
 A step-by-step to build TalkTrain from scratch using Alibaba Cloud serices </h3>
@@ -88,3 +107,7 @@ TalkTrain builds on existing technologies.
 - TTS: <a href='https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187'> Alibaba Intelligent Speech Interaction </a>  
 - Avatar Animation: <a href='https://github.com/OpenTalker/SadTalker'> SadTalker </a>  
 
+
+<div align="center">
+
+<img src='' width='500px'/> </div>
