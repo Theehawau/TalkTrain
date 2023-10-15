@@ -5,8 +5,8 @@
     "embedding_dimension": 768
   },
   "EASCfg": {
-    "url": "http://5525096423395655.ap-southeast-1.pai-eas.aliyuncs.com/api/predict/tyqw_service",
-    "token": "YmZmZTE3ZWQ2ZTUxYjg4YWQzYjk4ODJlYzg1OTMwMjY3OTJlNWZkYw=="
+    "url": "YourURL",
+    "token": "YourToken"
   },
   "ADBCfg": {
     "PG_HOST": "gp-gs5994z5q9j244y9uo-master.gpdbmaster.singapore.rds.aliyuncs.com",

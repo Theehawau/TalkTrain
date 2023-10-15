@@ -32,8 +32,8 @@ transcript = ""
 chars_since_metric_update = 0
 chars_since_question_gen = 0
 QUESTION_UPDATE_INTERVAL = 500 # After how many characters spoken to auto-generate questions
-TTS_PROJECT_NAME = 'zE6Ckn248eJtl6Cd'
-TTS_API_KEY = '3914319793ba4bce8ef86cf326eb173e'
+TTS_PROJECT_NAME = '' # Alibaba ISS project name
+TTS_API_KEY = '' # Alibaba ISS access token
 
 counter = 0
 
