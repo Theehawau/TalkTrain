@@ -115,7 +115,7 @@ export QT_QPA_PLATFORM=offscreen
 
 TalkTrain builds on existing technologies. We are grateful for training session provided by Alibaba Cloud that facilitated using their platform and their consistent support through the development of this project.
 
-- Question Generation(QG): <a href=''> Alibaba TongChen LLM </a> 
+- Question Generation(QG): <a href=''> Alibaba Tongyi Qianwen LLM </a> 
 - Automatic Speech Recognition (ASR): <a href='https://openai.com/research/whisper'> OpenAI whisper </a>   
 - TTS: <a href='https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187'> Alibaba Intelligent Speech Interaction </a>  
 - Avatar Animation: <a href='https://github.com/OpenTalker/SadTalker'> SadTalker </a>  
