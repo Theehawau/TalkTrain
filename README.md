@@ -2,7 +2,7 @@
 <div align="center">
 <h2> <strong> TalkTrain </strong> </h2>
 
-<a href='https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw'><img src='https://img.shields.io/badge/demo-YouTube-red'></a> &nbsp; <a href=''><img src='https://img.shields.io/badge/Alibaba%20Cloud%20-orange'></a> &nbsp; <a href=''><img src='https://img.shields.io/badge/GITEX%20-orange'></a> &nbsp;
+<a href=''><img src='https://img.shields.io/badge/Alibaba%20Cloud%20-orange'></a> &nbsp; <a href='https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw'><img src='https://img.shields.io/badge/demo-YouTube-red'></a> &nbsp;  <a href=''><img src='https://img.shields.io/badge/GITEX%20-orange'></a> &nbsp;
 
 <div>
     <a href='https://www.linkedin.com/in/toyinhawau/' target='_blank'>Hawau Olamide Toyin <sup>1,2,3</sup> </a>&emsp;
