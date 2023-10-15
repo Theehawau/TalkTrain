@@ -55,10 +55,9 @@ def clean_questions(raw_questions):
     cleaned_questions = '\n'.join(cleaned_questions)
     return cleaned_questions
 
-def generate_question(query, config_dir='config.json', state='DUMMY'):
+def generate_question(query, config_dir='config.json', state='notDUMMY'):
     if state == 'DUMMY':
-        return ['Why are you gay? Who says I am gay', "what are the advantage sof what you like to do and how do you plan to implement your plans?"]
-
+        return ['Hello I am your personal assistant, talktrainer.']
     else:
         if not os.path.exists(config_dir):
             print("Configuration file does not exist at relative path \"", config_dir, "\"")

@@ -1,13 +1,19 @@
 import os
 import time
+import shutil
+import os.path as op
 import gradio as gr
 import parselmouth
 import speech_recognition as sr
-from gtts import gTTS
-from SadTalker.inference import get_avatar_video
-from concurrent.futures import ProcessPoolExecutor
+import random
 
-ppe = ProcessPoolExecutor()
+from tts import tts
+from gtts import gTTS
+from pydub import AudioSegment
+from transformers import pipeline
+from SadTalker.inference import get_avatar_video
+
+pipe = pipeline("automatic-speech-recognition", model="openai/whisper-tiny.en")
 
 from voicelab.src.Voicelab.toolkits.Voicelab.MeasureSpeechRateNode import MeasureSpeechRateNode
 from voicelab.src.Voicelab.toolkits.Voicelab.MeasurePitchNode import MeasurePitchNode
@@ -16,36 +22,39 @@ r=sr.Recognizer()
 rate_node = MeasureSpeechRateNode()
 pitch_node = MeasurePitchNode()
 
-AUDIO_DIR = '/home/kane/TalkTrain/audios'
-VIDEO_DIR = '/home/kane/TalkTrain/results'
-IMAGE_PATH = '/home/kane/TalkTrain/portraits/guy2.jpeg'
+WORK_DIR = os.getcwd()
+SLIDES_PATH = WORK_DIR + "/slides/"
+PANELS_PATH = WORK_DIR + "/results/"
+AUDIO_DIR = WORK_DIR + '/audios/'
+VIDEO_DIR = WORK_DIR + '/results/'
+IMAGE_PATH = '/home/kane/TalkTrain/portraits/Panel2.png'
 
-from tts import tts
-from concurrent.futures import ThreadPoolExecutor
+
 counter = 0
 
-def generate_videos(questions):
+def generate_video(questions):
     global counter
     print('generation video called')
-    # with ProcessPoolExecutor(max_workers=1) as executor:
-    #     for question in questions:
-    #         print('process pool')
-    #         counter+=1
-    #         executor.submit(avatar_pipeline, question,counter)
-    # print('Tasks submitted')
-    for question in questions:
+    if type(questions) == str:
         counter+=1
-        avatar_pipeline(question,counter)
+        split_questions = questions.split('\n')
+        question_choice = random.randint(0, len(split_questions)-1)
+        print(split_questions[question_choice])
+        avatar_pipeline(split_questions[question_choice],counter)
+    else:
+        counter+=1
+        question_choice = random.randint(0, len(questions)-1)
+        print(questions[question_choice])
+        avatar_pipeline(questions[question_choice],counter)
     return None
 
 def avatar_pipeline(question, count):
     print(f'Generating video for {question}')
-    # tts('zE6Ckn248eJtl6Cd', 'dccf69c25151444a9d1a2a65a7cb6404',question, f'{AUDIO_DIR}/Audio{count}')
-    tts = gTTS(question)
-    tts.save(f'{AUDIO_DIR}/Audio{count}.wav')
+    tts('zE6Ckn248eJtl6Cd', '3914319793ba4bce8ef86cf326eb173e',question, f'{AUDIO_DIR}/Audio{count}.wav')
+    # tts = gTTS(question)
+    # tts.save(f'{AUDIO_DIR}/Audio{count}.wav')
     get_avatar_video(f'{AUDIO_DIR}/Audio{count}.wav',IMAGE_PATH, f'Panel{count}')
     return('Done!')
-
 
 def generate_speech(text):
     return f"Input: \n {text}"
@@ -83,6 +92,9 @@ def use_text(text, file):
         return f"{text}"
     elif file:
         return save_file(file)
+
+def use_file(file):
+    return save_file(file)
 
 def save_file(file):
     global transcript
@@ -139,15 +151,92 @@ def analyze_rate(metric_name, value, lower_threshold, upper_threshold):
     response = ""
     # response += f"{metric_name}: {value}"
     if value < lower_threshold:
-        response +=  f"Your {metric_name.lower()} is low. {get_recommendation(metric_name, 'faster' if metric_name == 'Speech rate' else 'more fluently')}"
+        response +=  f"Your {metric_name.lower()} is low. {get_recommendation(metric_name, 'faster')}"
     elif value > upper_threshold:
-        response +=  f"Your {metric_name.lower()} is high. {get_recommendation(metric_name, 'slower' if metric_name == 'Speech rate' else 'in a more consistent tone')}"
+        response +=  f"Your {metric_name.lower()} is high. {get_recommendation(metric_name, 'slower')}"
     else:
         response +=  f"Your {metric_name.lower()} is good. Keep it up!"
     return response
 
 def get_recommendation(metric_name, suggestion):
-    if metric_name == 'Speech rate':
-        return f"Try to speak at a {suggestion} pace."
+    if suggestion == 'faster':
+        if metric_name == 'Speech rate':
+            return f"Try to speak at a faster pace."
+        elif metric_name == 'Pause Rate':
+            return f'Take a breath!'
+        elif metric_name == 'Standard Deviation of Pitch':
+            return f'Your speech may sound monotone.'
+        
+    elif suggestion == 'slower':
+        if metric_name == 'Speech rate':
+            return f" Try to speak more slowly."
+        elif metric_name == 'Pause Rate':
+            return f' Try to speak more fluently.'
+        elif metric_name == 'Standard Deviation of Pitch':
+            return f'Try to speak in a more consistent tone.'
+        
+
+def previous(slide_no):
+        file = f"{SLIDES_PATH}Slide{int(slide_no)}.PNG"
+        return gr.Image(value = file, type='filepath')
+    
+def next_slide(slide_no):
+    file = f"{SLIDES_PATH}Slide{int(slide_no)}.PNG"
+    return gr.Image(value = file, type='filepath')
+
+def add(uploaded_slides, x):
+    max = len(uploaded_slides) - 1
+    if x == max:
+        return x
+    return x+1
+
+def sub(uploaded_slides, x):
+    if x == 1:
+        return x
     else:
-        return f"Try to speak {suggestion}."
+        return x-1
+
+def Upload(files, uploaded_slides):
+    save_files = []
+    for file in files:
+        save_file = SLIDES_PATH + op.basename(file.name)
+        shutil.copy(file.name, save_file)
+        save_files.append(save_file)
+    uploaded_slides.extend(save_files)
+    return  uploaded_slides
+
+def Remove(uploaded_slides):
+    for file in uploaded_slides:
+        if op.exists(file):os.remove(file)
+    return gr.State(value=[""])
+
+def slide_show(x):
+    return gr.Column(visible=True), gr.Column(visible=False), gr.Image(value=x[1])
+
+def transcribe(audio, state=""):
+    global transcript
+    time.sleep(4)
+    print(audio)
+
+    # Load the WAV files
+    audio1 = AudioSegment.from_file("recording.wav", format="wav")
+    audio2 = AudioSegment.from_file(audio, format="wav")
+    # Concatenate the audio segments
+    result = audio1 + audio2
+
+    # Export the concatenated audio as a new WAV file
+    result.export("recording.wav", format="wav")
+
+    # Get rid of the glitch where silence generates the word "you".
+    text = pipe(audio)["text"]
+    if text.replace(" ", "") != "you":
+        state += text + " "
+
+    transcript = 'transciption'
+    return state, state
+
+def make_question_video(counter,questions):
+    q = counter
+    counter += 1
+    return gr.Video(value = PANELS_PATH + f"Panel{q+1}.mp4", autoplay = True), counter
+    

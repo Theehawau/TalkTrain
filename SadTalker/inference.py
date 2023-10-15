@@ -30,6 +30,7 @@ def main(args):
     input_roll_list = args.input_roll
     ref_eyeblink = args.ref_eyeblink
     ref_pose = args.ref_pose
+    still = True
 
     current_root_path = os.path.split(sys.argv[0])[0]
 
@@ -38,7 +39,6 @@ def main(args):
     print('Model Initialize')
     #init model
     preprocess_model = CropAndExtract(sadtalker_paths, device)
-    print('After Model Initialize')
     audio_to_coeff = Audio2Coeff(sadtalker_paths,  device)
     
     if args.facerender == 'facevid2vid':
@@ -151,6 +151,7 @@ def get_avatar_video(audio_dir, image_dir, save_name):
     args.source_image = image_dir
     args.save_name = save_name
     args.facerender = "pirender"
+    args.still = True
 
     if torch.cuda.is_available() and not args.cpu:
         args.device = "cuda"

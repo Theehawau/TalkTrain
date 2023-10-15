@@ -12,7 +12,7 @@ def processGETRequest(appKey, token, text, audioSaveFile, format, sampleRate) :
     url = url + '&text=' + text
     url = url + '&format=' + format
     url = url + '&sample_rate=' + str(sampleRate)
-    url = url + '&voice=' + 'luca'
+    url = url + '&voice=' + 'William'
     print(url)
     conn = http.client.HTTPSConnection(host)
     conn.request(method='GET', url=url)
