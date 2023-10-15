@@ -94,8 +94,10 @@ python llm+tts+avatar_example.py
 ## Issues, Limitations
 
 You need an Alibaba cloud account and services initiated to test this out. A recorded demo is here
-If you run into QS error 
-```bash export QT_QPA_PLATFORM=offscreen ``` , setting this environment variable solves this.
+If you run into QS error , setting this environment variable solves this.
+```bash 
+export QT_QPA_PLATFORM=offscreen 
+``` 
 
 
 
@@ -103,7 +105,7 @@ If you run into QS error
 
 TalkTrain builds on existing technologies.
 
-- Question Generation(QG): <a href=''> AliBaba TongChen LLM </a> 
+- Question Generation(QG): <a href=''> Alibaba TongChen LLM </a> 
 - Automatic Speech Recognition (ASR): <a href=''> OpenAI whisper </a>   
 - TTS: <a href='https://www.alibabacloud.com/help/en/intelligent-speech-interaction/latest/activate-service#topic-2572187'> Alibaba Intelligent Speech Interaction </a>  
 - Avatar Animation: <a href='https://github.com/OpenTalker/SadTalker'> SadTalker </a>  
