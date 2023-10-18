@@ -5,12 +5,12 @@
 <a href=''><img src='https://img.shields.io/badge/Alibaba%20Cloud%20-orange'></a> &nbsp; <a href='https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw'><img src='https://img.shields.io/badge/demo-YouTube-red'></a> &nbsp;  <a href=''><img src='https://img.shields.io/badge/GITEX%20-orange'></a> &nbsp;
 
 <div>
-    <a href='https://www.linkedin.com/in/toyinhawau/' target='_blank'>Hawau Olamide Toyin <sup>1,2,3</sup> </a>&emsp;
-    <a href='https://www.linkedin.com/in/kanelindsay1/' target='_blank'>Kane Lindsay<sup>1,2</a>&emsp;
+    <a href='https://www.linkedin.com/in/toyinhawau/' target='_blank'>Hawau Olamide Toyin <sup>1,2</sup> </a>&emsp;
+    <a href='https://www.linkedin.com/in/kanelindsay1/' target='_blank'>Kane Lindsay<sup>1</a>&emsp;
 </div>
 <br>
 <div>
-    <sup>1</sup> MBZUAI &emsp; <sup>2</sup> Metaverse Lab, MBZUAI &emsp; <sup>3</sup> Speech Lab, MBZUAI &emsp; 
+     <sup>1</sup> Metaverse Lab, MBZUAI &emsp; <sup>2</sup> Speech Lab, MBZUAI &emsp; 
 </div>
 <br>
 <i><strong><a href='https://middle-east.alibabacloud.com/campaign/ai_hackathon#J_9912546380' target='_blank'>GITEX AI InnovateFest 2023 Powered by Alibaba Cloud</a></strong></i>
