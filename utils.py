@@ -34,6 +34,7 @@ chars_since_question_gen = 0
 QUESTION_UPDATE_INTERVAL = 500 # After how many characters spoken to auto-generate questions
 TTS_PROJECT_NAME = '' # Alibaba ISS project name
 TTS_API_KEY = '' # Alibaba ISS access token
+language='en-in' # Language for speech recognition and TTS
 
 counter = 0
 

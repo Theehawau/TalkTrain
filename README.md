@@ -26,7 +26,7 @@ Make your speech to our virtual assistant, and you will be provided with useful 
 
 TalkTrain is an entry for the GITEX AI InnovateFest 2023 Hackathon, powered by Alibaba Cloud. Watch project presentation on [YouTube](https://youtu.be/Na4XdjN_FaM?si=9K7TArx8PfI4t0jw).
 
-<h3>  (Coming SOON!!!) A step-by-step guide to build TalkTrain from scratch using Alibaba Cloud serices </h3>
+<h3>  (Coming SOON!!!) A step-by-step guide to build TalkTrain from scratch using Alibaba Cloud services </h3>
 
 ## Features
 
